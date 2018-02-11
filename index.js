@@ -4,7 +4,7 @@ var mongodb = require("mongodb");
 var ObjectID = mongodb.ObjectID;
 
 var SAMPLE_COLLECTION = "sample";
-
+var CUSTOMER_COLLECTION = "Customer";
 var app = express();
 app.use(bodyParser.json());
 
@@ -32,6 +32,16 @@ mongodb.MongoClient.connect(process.env.MONGODB_URI, function (err, database) {
 
 app.get("/api/sample", function(req, res) {
   db.collection(SAMPLE_COLLECTION).find({}).toArray(function(err, docs) {
+    if (err) {
+      handleError(res, err.message, "Failed to get contacts.");
+    } else {
+      res.status(200).json(docs);
+    }
+  });
+});
+
+app.get("/api/Customer", function(req, res) {
+  db.collection(CUSTOMER_COLLECTION).find({}).toArray(function(err, docs) {
     if (err) {
       handleError(res, err.message, "Failed to get contacts.");
     } else {
