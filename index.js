@@ -51,7 +51,7 @@ app.get("/api/Customer", function(req, res) {
 });
 
 app.post("/api/Customer/newuser", function(req, res) {
-  db.collection(CUSTOMER_COLLECTION).insert([ {firstname: "testpost",lastname: "pppp",tel: "0968378212",
+  db.collection(CUSTOMER_COLLECTION).insert([ {firstname: "testpost2",lastname: "pppp",tel: "0968378212",
   email: "thammaroko" }
   ]
 )});
