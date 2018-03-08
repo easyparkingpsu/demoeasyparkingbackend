@@ -51,7 +51,14 @@ app.get("/api/Customer", function(req, res) {
 });
 
 app.post("/api/Customer/newuser", function(req, res) {
-  db.collection(CUSTOMER_COLLECTION).insert([ {firstname: "testpost2",lastname: "pppp",tel: "0968378212",
-  email: "thammaroko" }
-  ]
-)});
+  var listname = req.body;
+
+ db.collection(CUSTOMER_COLLECTION).insert(listname,function(err, docs) {
+   res.send(firstname = "thummarong2",lastname = "wongsawat 2",tel = "0958302781" + docs.name)
+   if (err) {
+     handleError(res, err.message, "Failed to post contacts.");
+   } else {
+     res.status(201).json(docs);
+   }
+ });
+});
